@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Engage for Development</title>
+  <style>
+    /* Reset CSS */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    html {
+      scroll-behavior: smooth;
+    }
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      color: #333;
+      line-height: 1.6;
+    }
+    /* Header */
+    header {
+      background-color: #005a87;
+      color: #fff;
+      padding: 20px 0;
+      text-align: center;
+    }
+    header h1 {
+      margin-bottom: 10px;
+      font-size: 2.5em;
+    }
+    header p {
+      font-size: 1.2em;
+    }
+    /* Navigation */
+    nav {
+      background-color: #007bb5;
+      padding: 10px 0;
+    }
+    nav .container {
+      max-width: 1200px;
+      margin: auto;
+      text-align: center;
+    }
+    nav ul {
+      list-style: none;
+    }
+    nav ul li {
+      display: inline-block;
+      margin: 0 15px;
+    }
+    nav ul li a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 1.1em;
+    }
+    nav ul li a:hover {
+      text-decoration: underline;
+    }
+    /* Container */
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: auto;
+      padding: 20px 0;
+    }
+    /* Hero Section */
+    .hero {
+      background: url('https://via.placeholder.com/1200x400') no-repeat center center/cover;
+      height: 400px;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .hero h2 {
+      font-size: 3em;
+      color: #fff;
+      background: rgba(0, 0, 0, 0.5);
+      padding: 20px;
+      border-radius: 10px;
+    }
+    /* Sections */
+    section {
+      background-color: #fff;
+      margin: 20px 0;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+    section h2 {
+      margin-bottom: 15px;
+      font-size: 2em;
+      color: #005a87;
+    }
+    section p {
+      margin-bottom: 15px;
+      font-size: 1.1em;
+      text-align: justify;
+    }
+    /* Grid layout for Projects, Testimonials, etc. */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+    .grid-item {
+      background: #fafafa;
+      padding: 15px;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+    .grid-item img {
+      width: 100%;
+      border-radius: 8px;
+      margin-bottom: 10px;
+    }
+    .grid-item h3 {
+      margin-bottom: 10px;
+      font-size: 1.5em;
+      color: #007bb5;
+    }
+    .grid-item p {
+      font-size: 1em;
+      line-height: 1.5;
+    }
+    /* Contact Form */
+    .contact-form label {
+      display: block;
+      margin: 10px 0 5px;
+      font-weight: bold;
+    }
+    .contact-form input[type="text"],
+    .contact-form input[type="email"],
+    .contact-form textarea {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      margin-bottom: 15px;
+      font-size: 1em;
+    }
+    .contact-form input[type="submit"] {
+      background-color: #005a87;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      font-size: 1.1em;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    .contact-form input[type="submit"]:hover {
+      background-color: #007bb5;
+    }
+    /* Footer */
+    footer {
+      background-color: #333;
+      color: #fff;
+      text-align: center;
+      padding: 20px 0;
+    }
+    footer p {
+      margin: 5px 0;
+      font-size: 0.9em;
+    }
+    footer a {
+      color: #fff;
+      text-decoration: none;
+      margin: 0 5px;
+    }
+    footer a:hover {
+      text-decoration: underline;
+    }
+    /* Responsive */
+    @media (max-width: 768px) {
+      nav ul li {
+        display: block;
+        margin: 10px 0;
+      }
+      .hero h2 {
+        font-size: 2em;
+      }
+    }
+  </style>
+  <script>
+    // DOM ready
+    document.addEventListener('DOMContentLoaded', function () {
+      // Smooth scroll for nav links
+      const navLinks = document.querySelectorAll('nav ul li a');
+      navLinks.forEach(link => {
+        link.addEventListener('click', function (e) {
+          e.preventDefault();
+          const targetId = this.getAttribute('href').substring(1);
+          const targetSection = document.getElementById(targetId);
+          if (targetSection) {
+            window.scrollTo({
+              top: targetSection.offsetTop - 60,
+              behavior: 'smooth'
+            });
+          }
+        });
+      });
+      
+      // Handle contact form submission
+      const contactForm = document.querySelector('.contact-form');
+      if(contactForm) {
+        contactForm.addEventListener('submit', function(e) {
+          e.preventDefault();
+          alert('Thank you for your message. We will get back to you shortly.');
+          this.reset();
+        });
+      }
+      
+      // Simple animation for hero text on scroll
+      window.addEventListener('scroll', function () {
+        const heroText = document.querySelector('.hero h2');
+        let scrollPos = window.pageYOffset;
+        heroText.style.opacity = 1 - scrollPos / 400;
+      });
+    });
+  </script>
+</head>
+<body>
+  <!-- Header Section -->
+  <header>
+    <div class="container">
+      <h1>Engage for Development</h1>
+      <p>Empowering communities through engineering excellence</p>
+    </div>
+  </header>
+
+  <!-- Navigation -->
+  <nav>
+    <div class="container">
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About Us</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#involved">Get Involved</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section id="home" class="hero">
+    <h2>Building a Better Future Together</h2>
+  </section>
+
+  <!-- About Us Section -->
+  <section id="about">
+    <div class="container">
+      <h2>About Us</h2>
+      <p>
+        Engage for Development is dedicated to facilitating engineering projects in poverty-stricken communities around the world.
+        Our mission is to provide grants and support to empower individuals and foster a rich knowledge exchange.
+      </p>
+      <p>
+        We primarily support student groups from UK universities who wish to work on civil engineering projects in developing countries.
+        Through innovation and collaboration, we believe engineering can be a powerful tool for sustainable development.
+      </p>
+      <p>
+        Our approach is rooted in the conviction that every project, big or small, can have a transformative impact on communities.
+        Join us in our mission to create lasting change.
+      </p>
+    </div>
+  </section>
+
+  <!-- Projects Section -->
+  <section id="projects">
+    <div class="container">
+      <h2>Our Projects</h2>
+      <div class="grid">
+        <div class="grid-item">
+          <img src="https://via.placeholder.com/300x200" alt="Project 1">
+          <h3>Water Supply Initiative</h3>
+          <p>
+            Providing clean and accessible water to remote communities with sustainable water filtration systems.
+          </p>
+        </div>
+        <div class="grid-item">
+          <img src="https://via.placeholder.com/300x200" alt="Project 2">
+          <h3>Renewable Energy Systems</h3>
+          <p>
+            Empowering communities by harnessing renewable energy through solar panels and wind turbines.
+          </p>
+        </div>
+        <div class="grid-item">
+          <img src="https://via.placeholder.com/300x200" alt="Project 3">
+          <h3>Infrastructure Development</h3>
+          <p>
+            Building robust, sustainable structures to enhance community resilience and growth.
+          </p>
+        </div>
+        <div class="grid-item">
+          <img src="https://via.placeholder.com/300x200" alt="Project 4">
+          <h3>Educational Facilities</h3>
+          <p>
+            Upgrading schools and educational centers to inspire future generations of engineers.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Get Involved Section -->
+  <section id="involved">
+    <div class="container">
+      <h2>Get Involved</h2>
+      <p>
+        Are you passionate about making a difference? There are many ways to join our efforts:
+      </p>
+      <ul>
+        <li>Volunteer with our project teams</li>
+        <li>Donate to support our initiatives</li>
+        <li>Partner with us on collaborative projects</li>
+        <li>Share your expertise and mentor young engineers</li>
+      </ul>
+      <p>
+        Every contribution helps us transform challenges into opportunities.
+      </p>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact">
+    <div class="container">
+      <h2>Contact Us</h2>
+      <div class="grid">
+        <div class="grid-item">
+          <h3>Our Office</h3>
+          <p>
+            <strong>Address:</strong><br>
+            Flat 6, Wykeham House,<br>
+            10-12 Bramber Road,<br>
+            LONDON, W14 9PB
+          </p>
+          <p>
+            <strong>Phone:</strong> 07859920597<br>
+            <strong>Email:</strong> <a href="mailto:info@engagefordevelopment.org">info@engagefordevelopment.org</a>
+          </p>
+        </div>
+        <div class="grid-item">
+          <h3>Send Us a Message</h3>
+          <form class="contact-form">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" placeholder="Your Name">
+            
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" placeholder="Your Email">
+            
+            <label for="message">Message:</label>
+            <textarea id="message" name="message" rows="5" placeholder="Your Message"></textarea>
+            
+            <input type="submit" value="Send Message">
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Our Impact Section -->
+  <section id="more-info">
+    <div class="container">
+      <h2>Our Impact</h2>
+      <p>
+        Since our inception, we have positively influenced countless communities worldwide. Our projects have:
+      </p>
+      <ul>
+        <li>Improved access to clean water for over 10,000 people</li>
+        <li>Implemented renewable energy solutions in remote villages</li>
+        <li>Enhanced educational facilities and infrastructure</li>
+        <li>Supported sustainable community development</li>
+      </ul>
+      <p>
+        Every initiative is a step towards a more equitable and sustainable future.
+      </p>
+    </div>
+  </section>
+
+  <!-- Testimonials Section -->
+  <section id="testimonials">
+    <div class="container">
+      <h2>Testimonials</h2>
+      <div class="grid">
+        <div class="grid-item">
+          <blockquote>
+            "Engage for Development has transformed our community. Their dedication is truly inspiring."
+          </blockquote>
+          <p>- Community Leader</p>
+        </div>
+        <div class="grid-item">
+          <blockquote>
+            "Our partnership with Engage for Development opened up new opportunities for our students."
+          </blockquote>
+          <p>- University Partner</p>
+        </div>
+        <div class="grid-item">
+          <blockquote>
+            "I am proud to volunteer with an organization that truly makes a difference."
+          </blockquote>
+          <p>- Volunteer Engineer</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- News Section -->
+  <section id="news">
+    <div class="container">
+      <h2>Latest News</h2>
+      <article>
+        <h3>New Project Launch in East Africa</h3>
+        <p>
+          Engage for Development is excited to announce a new initiative to improve water infrastructure in rural East Africa.
+          This project will bring sustainable water solutions to communities in need.
+        </p>
+        <p><em>Published on: February 10, 2025</em></p>
+      </article>
+      <article>
+        <h3>Partnership with a Leading University</h3>
+        <p>
+          We are proud to announce our collaboration with one of the top engineering universities in the UK.
+          This partnership will support innovative student-led projects in developing countries.
+        </p>
+        <p><em>Published on: January 25, 2025</em></p>
+      </article>
+      <article>
+        <h3>Volunteer Spotlight</h3>
+        <p>
+          Meet some of the passionate volunteers behind our successful projects.
+          Their dedication is at the heart of our mission to build sustainable communities.
+        </p>
+        <p><em>Published on: January 10, 2025</em></p>
+      </article>
+    </div>
+  </section>
+
+  <!-- Gallery Section -->
+  <section id="gallery">
+    <div class="container">
+      <h2>Project Gallery</h2>
+      <div class="grid">
+        <div class="grid-item">
+          <img src="https://via.placeholder.com/300x200" alt="Gallery Image 1">
+        </div>
+        <div class="grid-item">
+          <img src="https://via.placeholder.com/300x200" alt="Gallery Image 2">
+        </div>
+        <div class="grid-item">
+          <img src="https://via.placeholder.com/300x200" alt="Gallery Image 3">
+        </div>
+        <div class="grid-item">
+          <img src="https://via.placeholder.com/300x200" alt="Gallery Image 4">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section id="faq">
+    <div class="container">
+      <h2>Frequently Asked Questions</h2>
+      <div>
+        <h3>How can I get involved?</h3>
+        <p>
+          You can join our efforts by volunteering, donating, or partnering with us. Please visit the Get Involved section for more details.
+        </p>
+      </div>
+      <div>
+        <h3>Where are your projects located?</h3>
+        <p>
+          Our projects are located in various developing countries around the world, addressing critical infrastructure and development needs.
+        </p>
+      </div>
+      <div>
+        <h3>How do I donate?</h3>
+        <p>
+          Donations can be made through our online portal. For any questions, contact us via email or phone.
+        </p>
+      </div>
+      <div>
+        <h3>Can student groups apply for support?</h3>
+        <p>
+          Yes, we primarily support student groups from UK universities aiming to undertake civil engineering projects in developing regions.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- More About Us Section -->
+  <section id="extra">
+    <div class="container">
+      <h2>More About Us</h2>
+      <p>
+        Engage for Development was founded on the belief that engineering can change lives. With each project, we not only build infrastructure but also empower local communities with the knowledge and skills needed for sustainable growth.
+      </p>
+      <p>
+        Our history is filled with stories of transformation, collaboration, and hope. We continue to expand our reach, driven by a commitment to social and engineering excellence.
+      </p>
+      <p>
+        We invite you to learn more about our work, join our community, and be a part of a movement that is making a real difference.
+      </p>
+    </div>
+  </section>
+
+  <!-- Final Section -->
+  <section id="final">
+    <div class="container">
+      <h2>Connect With Us</h2>
+      <p>
+        Stay updated on our latest projects and news by following us on social media and subscribing to our newsletter.
+      </p>
+      <p>
+        Your support and involvement are crucial to our mission. Whether you’re a student, professional, or simply someone who cares, there’s a role for you in our journey towards a brighter future.
+      </p>
+      <p>
+        For further inquiries, please use our contact form or reach us directly through the provided details.
+      </p>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <p>&copy; 2025 Engage for Development Limited. All rights reserved.</p>
+      <p>
+        <small>
+          <strong>Address:</strong> Flat 6, Wykeham House, 10-12 Bramber Road, LONDON, W14 9PB | 
+          <strong>Phone:</strong> 07859920597 | 
+          <strong>Email:</strong> <a href="mailto:info@engagefordevelopment.org">info@engagefordevelopment.org</a>
+        </small>
+      </p>
+      <p>
+        Follow us:
+        <a href="#">Facebook</a> |
+        <a href="#">Twitter</a> |
+        <a href="#">LinkedIn</a>
+      </p>
+    </div>
+  </footer>
+</body>
+</html>
